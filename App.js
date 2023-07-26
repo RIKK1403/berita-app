@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -31,9 +32,36 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Bola" component={BolaScreen} />
-        <Tab.Screen name="Trending" component={TrendingScreen} />
-        <Tab.Screen name="JalanTol" component={JalanTolScreen} />
+        <Tab.Screen
+          name="Bola"
+          component={BolaScreen}
+          options={{
+            tabBarLabel: "Bola",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="baseball" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Trending"
+          component={TrendingScreen}
+          options={{
+            tabBarLabel: "Trending",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="fire" size={size} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="JalanTol"
+          component={JalanTolScreen}
+          options={{
+            tabBarLabel: "Jalan tol",
+            tabBarIcon: ({ color, size }) => {
+              return <Icon name="road-variant" size={size} color={color} />;
+            },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
